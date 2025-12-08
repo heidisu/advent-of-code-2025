@@ -1,0 +1,19 @@
+name: validate
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-days:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.0.x'
+    - run: dotnet tool restore
+    - run: dotnet fantomas -r --check .
