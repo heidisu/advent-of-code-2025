@@ -5,7 +5,7 @@ type JunctionBox = { X: int64; Y: int64; Z: int64 }
 let readFile () =
     File.ReadLines "input.txt"
     |> Seq.toList
-    |> List.mapi (fun i s ->
+    |> List.map (fun s ->
         let parts = s.Split(",")
 
         { X = int64 parts[0]
